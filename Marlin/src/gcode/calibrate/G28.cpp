@@ -72,7 +72,11 @@
 
     // Pretend the current position is 0,0
     current_position.set(0.0, 0.0);
+    SERIAL_ECHOLNPGM("Start homing");
+    report_current_position();
     sync_plan_position();
+    SERIAL_ECHOLNPGM("synced_plan_position");
+    report_current_position();
 
     const int x_axis_home_dir = TOOL_X_HOME_DIR(active_extruder);
 
@@ -94,9 +98,18 @@
 
     do_blocking_move_to_xy(1.5 * max_length(X_AXIS) * x_axis_home_dir, 1.5 * max_length(Y_AXIS) * Y_HOME_DIR, fr_mm_s);
 
+    SERIAL_ECHOLNPGM("homed 1");
+    report_current_position();
+
     endstops.validate_homing_move();
 
+    SERIAL_ECHOLNPGM("validated_homing_move");
+    report_current_position();
+
     current_position.set(0.0, 0.0);
+
+    SERIAL_ECHOLNPGM("homed 2");
+    report_current_position();
 
     #if ENABLED(SENSORLESS_HOMING) && DISABLED(ENDSTOPS_ALWAYS_ON_DEFAULT)
       TERN_(X_SENSORLESS, tmc_disable_stallguard(stepperX, stealth_states.x));
