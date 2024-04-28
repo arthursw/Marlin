@@ -55,8 +55,8 @@
 
 // Macros
 // G9 // Big servo
-#define MIN_PULSE_WIDTH       544 // 500     // the shortest pulse sent to a servo
-#define MAX_PULSE_WIDTH      2400 // 2500     // the longest pulse sent to a servo
+#define MIN_PULSE_WIDTH       500 // 750 // 544 // 500     // the shortest pulse sent to a servo
+#define MAX_PULSE_WIDTH      2500 // 2250 // 2400 // 2500     // the longest pulse sent to a servo
 #define DEFAULT_PULSE_WIDTH  1500     // default pulse width when servo is attached
 #define REFRESH_INTERVAL    20000 //5000     // minimum time to refresh servos in microseconds
 
